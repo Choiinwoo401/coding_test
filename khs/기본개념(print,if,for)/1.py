@@ -1,8 +1,19 @@
 import sys
-N = int(input())
-array1 = [sys.stdin.readline().rstrip() for i in range(N)]
-array1 = list(set(array1))
-array1.sort()
-array1.sort(key=len)
+input = sys.stdin.readline
+N = int(input().strip())
+array1 = list(map(int, input().split()))
+M = int(input().strip())
+array2 = list(map(int, input().split()))
+dict1 = {}
+
 for i in array1:
-    print(i)
+    if i not in dict1:
+        dict1[i] = 1
+    else:
+        dict1[i] += 1
+
+for j in array2:
+    if j not in dict1:
+        print(0,end = ' ')
+    else:
+        print(dict1[j],end = ' ')
